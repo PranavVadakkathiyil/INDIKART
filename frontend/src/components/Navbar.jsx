@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className="flex items-center gap-6">
         <FiSearch onClick={()=>setshowsearch(true)} className="cursor-pointer sm:text-[1.4rem] text-[1.2rem]" />
         <div className="group relative">
-          <CgProfile className="cursor-pointer sm:text-[1.4rem] text-[1.2rem]" />
+          <Link to='/login'><CgProfile className="cursor-pointer sm:text-[1.4rem] text-[1.2rem]" /></Link>
           <div className="group-hover:block hidden absolute dropdown-menu right-0 p-4">
             <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-700 ">
               <p className="cursor-pointer hover:text-black ">My Profile</p>
