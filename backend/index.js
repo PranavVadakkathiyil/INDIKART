@@ -5,6 +5,7 @@ import connectDB from './config/mongodb.js'
 import connnectCloudinary from './config/cloudinary.js'
 import productModel from './models/productModel.js'
 import userRouter from './routes/userRoute.js'
+import productRouter from './routes/productRoute.js'
 
 // App config
 const app =express()
@@ -20,7 +21,7 @@ app.use(cors())
 // api endpoint
 
 app.use('/api/user',userRouter)
-
+app.use('/api/product',productRouter)
 app.get('/',(req,res)=>{
     res.send("Api Working")
 })
@@ -33,3 +34,5 @@ app.listen(PORT,()=>{
 //first create config file for mongodb and cloude
 //then create models in model file for user and productModeland make controller for each users and product
 // add controller connection to route
+//route to index file
+//middle waer for add product using multer
