@@ -10,7 +10,7 @@ const NewArrival = () => {
       
         setlatestProducts(products);
       
-    }, []);
+    }, [products]);
     
     console.log(latestProducts,"ss")
   return (
@@ -26,8 +26,8 @@ const NewArrival = () => {
         {
           latestProducts.map((item) => (
             <ProductItem
-              key={item.id } // Handle both `id` and `_id`
-              id={item.id }
+              key={item._id } // Handle both `id` and `_id`
+              _id={item._id }
               image={item.image[0]}
               name={item.name}
               price={item.price}

@@ -78,7 +78,7 @@ const Collection = () => {
       
     applyFilter()
       
-    }, [category,subcategory,search,showsearch])
+    }, [category,subcategory,search,showsearch,products])
     useEffect(() => {
       
     sortProduct();
@@ -99,7 +99,7 @@ const Collection = () => {
         <p className="mb-3 text-sm font-medium">CATEGORIES</p>
         <div className="flex flex-col text-gray-700">
           <p className="flex gap-2">
-            <input type="checkbox" name="" id="" value={'man'} onChange={toggleCategory}  />Men
+            <input type="checkbox" name="" id="" value={'men'} onChange={toggleCategory}  />Men
           </p>
           <p className="flex gap-2">
             <input type="checkbox" name="" id="" value={'women'} onChange={toggleCategory} />Women
@@ -145,7 +145,7 @@ const Collection = () => {
           filterproduct.map((item,index)=>(
             <ProductItem
             key={index } // Handle both `id` and `_id`
-            id={item.id }
+            _id={item._id }
             image={item.image[0]}
             name={item.name}
             price={item.price}

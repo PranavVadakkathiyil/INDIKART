@@ -7,12 +7,13 @@ const Cart = () => {
   const { products, currency, cartitem,updateQuantity,navigate } = useContext(ShopContext);
   const [cartData, setcartData] = useState([]);
   useEffect(() => {
+    
     const tempData = [];
     for (const items in cartitem) {
       for (const item in cartitem[items]) {
         if (cartitem[items][item] > 0) {
           tempData.push({
-            id: items,
+            _id: items,
             size: item,
             quantity: cartitem[items][item],
           });
@@ -21,7 +22,7 @@ const Cart = () => {
     }
     //console.log(tempData)
     setcartData(tempData);
-  }, [cartitem]);
+  }, [cartitem,products]);
 
   return (
     <div className="border-t pt-14">
@@ -31,7 +32,7 @@ const Cart = () => {
       <div>
         {cartData.map((item, index) => {
           const productData = products.find(
-            (product) => product.id === item.id
+            (product) => product._id === item._id
           );
           return(
             <div key={index} className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4 ">
@@ -45,8 +46,8 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-              <input onChange={(e)=>e.target === ''|| e.target.value === '0' ? null : updateQuantity(item.id,item.size,Number(e.target.value))} className="border max-w-10 sm:max-w-2 px-4 sm:px-[1.9rem] py-1" type="number" min={1} defaultValue={item.quantity} />
-              <MdDelete onClick={()=>updateQuantity(item.id,item.size,0)} className="cursor-pointer" />
+              <input onChange={(e)=>e.target === ''|| e.target.value === '0' ? null : updateQuantity(item._id,item.size,Number(e.target.value))} className="border max-w-10 sm:max-w-2 px-4 sm:px-[1.9rem] py-1" type="number" min={1} defaultValue={item.quantity} />
+              <MdDelete onClick={()=>updateQuantity(item._id,item.size,0)} className="cursor-pointer" />
 
             </div>
           )
