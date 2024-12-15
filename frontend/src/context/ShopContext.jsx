@@ -68,6 +68,8 @@ const ShopContextProvider = (props) => {
     let cartData =structuredClone(cartitem);
     cartData[itemId][size]= quantity;
     setcartitem(cartData);
+    console.log(cartitem);
+    
     if(token){
       try {
         await axios.post('/api/cart/update',{itemId,size,quantity},{headers:{token}})
@@ -98,7 +100,7 @@ const ShopContextProvider = (props) => {
   const getProductData = async ()=>{
     try {
       const response = await axios.get('/api/product/list')
-      console.log(response.data.message)
+      //console.log(response.data.message)
       if(response.data.success)
       {
         setproducts(response.data.message)
@@ -150,6 +152,7 @@ const ShopContextProvider = (props) => {
     navigate,
     settoken,token
   };
+  
   return (
     <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
   );
